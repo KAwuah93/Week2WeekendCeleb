@@ -50,19 +50,11 @@ public class CelebrityCategoryActivity extends AppCompatActivity implements Navi
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        //pull Data and bind it to the view
-        //TODO replace this with actual data when you finish the SQL implementation
-        ArrayList<Celebrity> MasterList = getData();
-
         //creating the normal 'mode' for the function so we don't open a null page
         //However just like this it will always default back to musicians. unless we add this if
         if(savedInstanceState == null) {
-            bundle.putParcelableArrayList("test", MasterList);
-            // Where we load up the data that is being instantiated
             MusicianFragment musicianFragment = new MusicianFragment();
-            musicianFragment.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,musicianFragment);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,musicianFragment).commit();
             navigationView.setCheckedItem(R.id.nav_musician);
         }
 
@@ -105,10 +97,6 @@ public class CelebrityCategoryActivity extends AppCompatActivity implements Navi
             super.onBackPressed();
         }
     }
-
-    // TODO edit layouts for fragments to contain area to attach the root of the objects
-    // Todo attach recyclerViews at the root of the other views
-    // todo create the Detail view
     // todo fit the 'favorite' function into the views
 
     public ArrayList<Celebrity> getData(){

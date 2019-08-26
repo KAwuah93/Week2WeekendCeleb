@@ -27,24 +27,43 @@
 
     <TextView
         app:layout_constraintTop_toBottomOf="@id/detailIndustry"
-        app:layout_constraintBottom_toTopOf="@id/editbtn"
+        app:layout_constraintBottom_toTopOf="@id/detailUrl"
         android:id="@+id/detailBody"
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
     <Button
-        android:id="@+id/deleteBtn"
+        android:id="@+id/detailUrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/colorAccent"
-        android:text="DELETE"/>
+        android:text="URL"
+        app:layout_constraintBottom_toTopOf="@id/detailLin"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/detailLin"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/colorAccent"
+            android:text="DELETE"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editbtn"
-        app:layout_constraintBottom_toTopOf="@+id/deleteBtn"
-        android:text="Edit"/>
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editbtn"
+            app:layout_constraintBottom_toTopOf="@+id/deleteBtn"
+            android:text="Edit"/>
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
