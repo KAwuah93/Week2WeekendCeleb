@@ -1,5 +1,6 @@
 package com.example.week2weekendceleb;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.week2weekendceleb.model.datasource.local.database.CelebrityDatabaseHelper;
@@ -44,7 +45,6 @@ public class CelebrityCategoryActivity extends AppCompatActivity implements Navi
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         //creating the button to deploy the side menu
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -57,8 +57,6 @@ public class CelebrityCategoryActivity extends AppCompatActivity implements Navi
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,musicianFragment).commit();
             navigationView.setCheckedItem(R.id.nav_musician);
         }
-
-
     }
 
     @Override
@@ -81,9 +79,12 @@ public class CelebrityCategoryActivity extends AppCompatActivity implements Navi
                 break;
             case R.id.nav_favorite:
                 //replace with detail view and checking statement to see if we even have a 'favorite' saved.
-                // TODO take the bootleg delete off of this
-                dbhelper.CLEAR();
                 Toast.makeText(this, "Show Favorites", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.add_celeb:
+                Intent createCeleb = new Intent(this, newCelebrityAdd.class);
+                startActivityForResult(createCeleb,1);
+
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

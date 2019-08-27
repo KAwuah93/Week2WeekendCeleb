@@ -20,7 +20,6 @@ public class CelebrityDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CelebrityDatabaseContract.QUERY_CREATE_TABLE);
-
     }
 
     @Override
@@ -114,8 +113,6 @@ public class CelebrityDatabaseHelper extends SQLiteOpenHelper {
 
     public void updateCelebrityInDb(String id, Celebrity celebrityToSave) {
         SQLiteDatabase writableDatabase = this.getWritableDatabase();
-        //Container which is key value pairs, key being the Col of DB, value being
-        // what to save in that place
         ContentValues contentValues = new ContentValues();
         //Put values in contentValues
         contentValues.put(CelebrityDatabaseContract.COL_NAME, celebrityToSave.getName());
@@ -123,15 +120,12 @@ public class CelebrityDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(CelebrityDatabaseContract.COL_INDUSTRY, celebrityToSave.getIndustry());
         contentValues.put(CelebrityDatabaseContract.COL_URL, celebrityToSave.getRelevantUrl());
         //TODO check if this is wonky or not
-        writableDatabase.update(CelebrityDatabaseContract.TABLE_NAME, contentValues, "ID = ?", new String[]{id});
+        writableDatabase.update(CelebrityDatabaseContract.TABLE_NAME, contentValues, "id = ?", new String[]{id});
     }
 
     public void deleteCelebrityInDb(String id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        sqLiteDatabase.delete(CelebrityDatabaseContract.TABLE_NAME, "ID = ?", new String[]{id});
+        sqLiteDatabase.delete(CelebrityDatabaseContract.TABLE_NAME, "id = ?", new String[]{id});
     }
-
-
-
 
 }

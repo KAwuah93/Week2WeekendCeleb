@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".EditCelebActivity"></activity>
+        <activity android:name=".newCelebrityAdd" />
+        <activity android:name=".DetailActivity" />
         <activity
             android:name=".CelebrityCategoryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -20,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:authorities="com.example.week2weekendceleb.model.datasource.local.Contentprovider"
+            android:name="com.example.week2weekendceleb.model.datasource.local.Contentprovider.CelebrityContentProvider"/>
     </application>
 
 </manifest>

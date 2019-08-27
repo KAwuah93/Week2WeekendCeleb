@@ -36,6 +36,6 @@ public class CelebrityDatabaseContract {
     public static final String DROP_TABLE = String.format("DROP TABLE %s", TABLE_NAME);
 
     //Get Count
-    public static final String COUNT = String.format("SELECT * FROM " + TABLE_NAME,null);
+    public static final String COUNT = String.format("SELECT * FROM " + TABLE_NAME);
 
 }

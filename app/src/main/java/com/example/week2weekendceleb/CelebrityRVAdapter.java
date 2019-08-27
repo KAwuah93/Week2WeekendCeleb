@@ -20,7 +20,6 @@ public class CelebrityRVAdapter extends RecyclerView.Adapter<CelebrityRVAdapter.
     public CelebrityRVAdapter(ArrayList<Celebrity> celebArrayList) {
         this.celebArrayList = celebArrayList;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,7 +37,6 @@ public class CelebrityRVAdapter extends RecyclerView.Adapter<CelebrityRVAdapter.
         Celebrity currentCelebrity = celebArrayList.get(position);
         //how you can do it by using a prewritten method
         holder.populateValues(currentCelebrity);
-
     }
 
     @Override
@@ -65,10 +63,8 @@ public class CelebrityRVAdapter extends RecyclerView.Adapter<CelebrityRVAdapter.
             titleText.setText(celebrity.getName());
             setItemCar(celebrity);
         }
-
         @Override
         public void onClick(View view){
-
             // TODO replace this once you have a Details class
              Intent detailsIntent = new Intent(view.getContext(), DetailActivity.class);
              Bundle bundle = new Bundle();
@@ -76,7 +72,6 @@ public class CelebrityRVAdapter extends RecyclerView.Adapter<CelebrityRVAdapter.
              detailsIntent.putExtras(bundle);
 
              view.getContext().startActivity(detailsIntent);
-
         }
     }
 }

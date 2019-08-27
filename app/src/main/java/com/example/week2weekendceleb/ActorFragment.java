@@ -19,34 +19,47 @@ import java.util.ArrayList;
 public class ActorFragment extends Fragment {
 
     CelebrityDatabaseHelper dbhelper;
+    View root;
+    ArrayList<Celebrity> passedList;
+    RecyclerView recyclerView;
+    LinearLayoutManager lim;
+    CelebrityRVAdapter myAdapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         //Create the Root of it all
         Log.d("TEST", "made it into the inflator for the view");
-        View root = inflater.inflate(R.layout.fragment_actor, container, false);
+        root = inflater.inflate(R.layout.fragment_actor, container, false);
         //TODO fix the data call here
-        dbhelper = new CelebrityDatabaseHelper(getActivity().getApplicationContext());
-        ArrayList<Celebrity> passedList = getData();
-
-        RecyclerView recyclerView = root.findViewById(R.id.rvCelebrity);
-        LinearLayoutManager lim = new LinearLayoutManager(getActivity());
-        lim.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(lim);
-
-        CelebrityRVAdapter myAdapter = new CelebrityRVAdapter(passedList);
-
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        Log.d("TEST", "sending back view");
+        inflateView();
 
         return root;
 
     }
+
+
+
     public ArrayList<Celebrity> getData(){
         ArrayList<Celebrity> returnList = new ArrayList<>();
         //TODO replace with actual SQL pulls for the initial data we are binding.
         returnList = dbhelper.getByIndustry("Actor");
         return returnList;
+    }
+
+    public void inflateView(){
+        dbhelper = new CelebrityDatabaseHelper(getActivity().getApplicationContext());
+        passedList = getData();
+
+        recyclerView = root.findViewById(R.id.rvCelebrity);
+        lim = new LinearLayoutManager(getActivity());
+        lim.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(lim);
+
+        myAdapter = new CelebrityRVAdapter(passedList);
+
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        Log.d("TEST", "sending back view");
+
     }
 }

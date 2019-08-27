@@ -35,10 +35,13 @@ public class MusicianFragment extends Fragment {
         recyclerView.setLayoutManager(lim);
 
         CelebrityRVAdapter myAdapter = new CelebrityRVAdapter(passedList);
+        myAdapter.notifyDataSetChanged();
 
         recyclerView.setAdapter(myAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         Log.d("TEST", "sending back view");
+
+
 
         return root;
 
